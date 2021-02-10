@@ -1,4 +1,5 @@
 #coding: utf-8
+import argparse
 import requests
 import urllib
 import md5
@@ -7,7 +8,17 @@ HEADERS = {
     'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36',
     'Content-Type': 'application/json'
 }
-
+public_key = 'n0kgCvDGAbsNP7ddBcdbdDcmWCDKqoCO'
+private_key = '9PA6EbH6tlRoQltQYOJT9xBNHyUhqJashcni2G73'
+user_id = '9661000'
+card_id = '8601010000000013'
+ccv = None
+vto = '8/21'
+seguridad = 258
+correo = 'xxx@xxx.com'
+telefono = 'xxx'
+metodo = 'request_user_cards'
+# metodo = 'request_new_card'
 main_url = 'vpos.infonet.com.py:8888'
 
 bcs = requests.Session()
@@ -191,3 +202,51 @@ if __name__ == '__main__':
     resp = requests.post(url, json=data, headers=HEADERS)
     print resp.text, 'DELETE'     """
 
+
+
+iframeb = """
+<! DOCTYPE html>
+<html lang='en'>
+ <head>
+ <meta charset='UTF-8'>
+ <title>iFrame</title>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+ <script
+
+   src='http://localhost/bancard/bancardV2.js'></script>
+ </head>
+ <script type='application/javascript'>
+ styles = {{
+ 'form-background-color': '#001b60',
+ 'button-background-color': '#4faed1',
+ 'button-text-color': '#fcfcfc',
+ 'button-border-color': '#dddddd',
+ 'input-background-color': '#fcfcfc',
+ 'input-text-color': '#111111',
+ 'input-placeholder-color': '#111111'
+ }};
+ window. onload = function () {{
+ Bancard.Cards. createForm ('iframe-container', '{}',
+styles);
+ }};
+ </script>
+ <body>
+ <h1 style='text-align: center'>iFrame vPos</h1>
+ <div style='height: 300px; width: 500px; margin: auto' id='iframe-container' ></div>
+
+ </body>
+</html>
+"""
+# Nombre:
+# MasterCard
+# Numero:
+# Vencimiento: 8/21
+# Codigo de seguridad:
+# 258
+# url = 'https://vpos.service.sandbox:4485/vpos/api/0.3/cards/new'
+# public_key = '3msJMmy2WkKaxLc54zN8reEi9LEYvgVT'
+# private_key = 'DhcwTEUNHpQtOsJ9p,zHNGoRSbrOWlEd0zRCB,eZ'
+#user_id = '4675564'
